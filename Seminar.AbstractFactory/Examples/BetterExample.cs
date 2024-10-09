@@ -13,9 +13,9 @@ public class BetterExample : IExample
 		Console.WriteLine("\n-----------------------------------------\n");
 		ModernHouse modernHouse = new ModernHouse();
 		ModernFurnitureFactory modernFurnitureFactory = new ModernFurnitureFactory();
-		FurnitureAdderBase furnitureAdder = new BasicFurnitureAdder(modernFurnitureFactory, modernHouse);
+		FurnitureAdderBase furnitureAdder = new BasicFurnitureAdder(modernFurnitureFactory);
 		Console.WriteLine("(*) Build our modern house with BasicFurnitureAdder");
-		furnitureAdder.AddFurnitures();
+		furnitureAdder.AddFurnitures(modernHouse);
 		Console.WriteLine("\n-----------------------------------------\n");
 		modernHouse.DisplayFurnitures();
 		Console.WriteLine("\n-----------------------------------------\n");

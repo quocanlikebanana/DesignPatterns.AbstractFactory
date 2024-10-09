@@ -33,29 +33,27 @@ internal class ModernHouse : IHouse
 internal abstract class FurnitureAdderBase
 {
 	protected readonly IFurnitureFactory _furnitureFactory;
-	protected readonly IHouse _house;
 
-	public FurnitureAdderBase(IFurnitureFactory furnitureFactory, IHouse house)
+	public FurnitureAdderBase(IFurnitureFactory furnitureFactory)
 	{
 		_furnitureFactory = furnitureFactory;
-		_house = house;
 	}
 
-	public abstract void AddFurnitures();
+	public abstract void AddFurnitures(IHouse house);
 }
 
 // Basic adding stategy: 2 chairs, 1 coffee table, 1 sofa
 internal class BasicFurnitureAdder : FurnitureAdderBase
 {
-	public BasicFurnitureAdder(IFurnitureFactory furnitureFactory,IHouse house) : base(furnitureFactory, house)
+	public BasicFurnitureAdder(IFurnitureFactory furnitureFactory) : base(furnitureFactory)
 	{
 	}
 
-	public override void AddFurnitures()
+	public override void AddFurnitures(IHouse house)
 	{
-		_house.AddFurniture(_furnitureFactory.CreateChair());
-		_house.AddFurniture(_furnitureFactory.CreateCoffeeTable());
-		_house.AddFurniture(_furnitureFactory.CreateSofa());
-		_house.AddFurniture(_furnitureFactory.CreateChair());
+		house.AddFurniture(_furnitureFactory.CreateChair());
+		house.AddFurniture(_furnitureFactory.CreateCoffeeTable());
+		house.AddFurniture(_furnitureFactory.CreateSofa());
+		house.AddFurniture(_furnitureFactory.CreateChair());
 	}
 }
